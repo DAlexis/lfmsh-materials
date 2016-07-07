@@ -1,0 +1,72 @@
+%\documentclass[10pt,a5paper,book,russian,oneside]{ncc}
+\documentclass[a4paper,10pt]{book}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[koi8-r]{inputenc} %Перевод во внутреннюю кодировку
+%\usepackage[russtyle]{lhcyralt}
+\usepackage{amssymb} %Для привычного начертания греческих букв, например \varepsilon
+%\usepackage{nccpic} %Графика
+\usepackage{graphicx}
+\usepackage{amstext}
+\usepackage{amsmath}
+%\usepackage{nccmath}
+\usepackage[warn]{mathtext}
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+%\usepackage{floatflt} %Для вставки обтекаемых кратинок
+%\usepackage[russtyle]{lhcyrkoi}
+\usepackage{textcomp} %Для вставки значка градусов \textdegree и проч.
+%\usepackage[basic,box,physics]{circ} %Электрические схемы
+%\usepackage{paralist} %Для внутриабзацных перечней
+\usepackage[vmargin={3cm,2cm},hmargin={2cm,2cm}]{geometry}
+%\usepackage{fancyhdr}
+
+\title{Описания лабораторных работ ЛФМШ}
+\date{2010-2016}
+\author{Лаборанты ЛФМШей, от древнего времени до наших дней}
+
+\newcommand{\ListName}[1]{\indent\textbf{#1}}
+\newcommand{\LabTheme}[1]{\textit{#1}}
+
+\newcommand{\LabHeader}[2]{\ListName{Цель работы:} #1\par\ListName{Оборудование:} #2\par}
+
+\newcommand{\SolveVariant}{\subsubsection{Один из вариантов решения задачи}}
+\newcommand{\MesErrors}{\subsubsection{Расчёт погрешностей}} 
+\newcommand{\SchoolBase}{\subsubsection{Основные понятия из школьной программы}}
+\newcommand{\AdditionalQuestions}{\subsubsection{Дополнительные вопросы}}
+\newcommand{\AdditionalNotes}{\subsubsection{Замечания}}
+\newcommand{\Answer}{\textit{Ответ:} }
+
+\graphicspath{{images/}}
+\begin{document}
+%\pagestyle{empty}
+%\pagestyle{fancy}
+%\lhead[\thechapter]{qwe}
+\maketitle
+\tableofcontents
+\chapter{Лабораторные работы за 9 класс}
+\input{labsbook-9klass.tex}
+\chapter{Лабораторные работы за 10 класс}
+\input{labsbook-10klass.tex}
+\chapter{Лабораторные работы за 11 класс}
+\input{labsbook-11klass.tex}
+\end{document}
+
+
+% Шаблон
+\section{Название}
+\LabHeader{цель}{оборудование}
+\SolveVariant
+\begin{enumerate}
+    \item первое
+\end{enumerate}
+\MesErrors
+\SchoolBase
+\begin{itemize}
+    \item пункт
+\end{itemize}
+\AdditionalQuestions
+\begin{itemize}
+    \item вопрос\par
+    \Answer ответ
+\end{itemize}
