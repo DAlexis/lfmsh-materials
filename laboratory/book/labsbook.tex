@@ -2,10 +2,10 @@
 \documentclass[a4paper,10pt]{book}
 \usepackage[T2A]{fontenc}
 \usepackage[english,russian]{babel}
-\usepackage[koi8-r]{inputenc} %Перевод во внутреннюю кодировку
+\usepackage[utf8]{inputenc} %п÷п╣я─п╣п╡п╬п╢ п╡п╬ п╡п╫я┐я┌я─п╣п╫п╫я▌я▌ п╨п╬п╢п╦я─п╬п╡п╨я┐
 %\usepackage[russtyle]{lhcyralt}
-\usepackage{amssymb} %Для привычного начертания греческих букв, например \varepsilon
-%\usepackage{nccpic} %Графика
+\usepackage{amssymb} %п■п╩я▐ п©я─п╦п╡я▀я┤п╫п╬пЁп╬ п╫п╟я┤п╣я─я┌п╟п╫п╦я▐ пЁя─п╣я┤п╣я│п╨п╦я┘ п╠я┐п╨п╡, п╫п╟п©я─п╦п╪п╣я─ \varepsilon
+%\usepackage{nccpic} %п⌠я─п╟я└п╦п╨п╟
 \usepackage{graphicx}
 \usepackage{amstext}
 \usepackage{amsmath}
@@ -13,29 +13,29 @@
 \usepackage[warn]{mathtext}
 \usepackage{indentfirst}
 \usepackage{wrapfig}
-%\usepackage{floatflt} %Для вставки обтекаемых кратинок
+%\usepackage{floatflt} %п■п╩я▐ п╡я│я┌п╟п╡п╨п╦ п╬п╠я┌п╣п╨п╟п╣п╪я▀я┘ п╨я─п╟я┌п╦п╫п╬п╨
 %\usepackage[russtyle]{lhcyrkoi}
-\usepackage{textcomp} %Для вставки значка градусов \textdegree и проч.
-%\usepackage[basic,box,physics]{circ} %Электрические схемы
-%\usepackage{paralist} %Для внутриабзацных перечней
+\usepackage{textcomp} %п■п╩я▐ п╡я│я┌п╟п╡п╨п╦ п╥п╫п╟я┤п╨п╟ пЁя─п╟п╢я┐я│п╬п╡ \textdegree п╦ п©я─п╬я┤.
+%\usepackage[basic,box,physics]{circ} %п╜п╩п╣п╨я┌я─п╦я┤п╣я│п╨п╦п╣ я│я┘п╣п╪я▀
+%\usepackage{paralist} %п■п╩я▐ п╡п╫я┐я┌я─п╦п╟п╠п╥п╟я├п╫я▀я┘ п©п╣я─п╣я┤п╫п╣п╧
 \usepackage[vmargin={3cm,2cm},hmargin={2cm,2cm}]{geometry}
 %\usepackage{fancyhdr}
 
-\title{Описания лабораторных работ ЛФМШ}
+\title{п·п©п╦я│п╟п╫п╦я▐ п╩п╟п╠п╬я─п╟я┌п╬я─п╫я▀я┘ я─п╟п╠п╬я┌ п⌡п╓п°п╗}
 \date{2010-2016}
-\author{Лаборанты ЛФМШей, от древнего времени до наших дней}
+\author{п⌡п╟п╠п╬я─п╟п╫я┌я▀ п⌡п╓п°п╗п╣п╧, п╬я┌ п╢я─п╣п╡п╫п╣пЁп╬ п╡я─п╣п╪п╣п╫п╦ п╢п╬ п╫п╟я┬п╦я┘ п╢п╫п╣п╧}
 
 \newcommand{\ListName}[1]{\indent\textbf{#1}}
 \newcommand{\LabTheme}[1]{\textit{#1}}
 
-\newcommand{\LabHeader}[2]{\ListName{Цель работы:} #1\par\ListName{Оборудование:} #2\par}
+\newcommand{\LabHeader}[2]{\ListName{п╕п╣п╩я▄ я─п╟п╠п╬я┌я▀:} #1\par\ListName{п·п╠п╬я─я┐п╢п╬п╡п╟п╫п╦п╣:} #2\par}
 
-\newcommand{\SolveVariant}{\subsubsection{Один из вариантов решения задачи}}
-\newcommand{\MesErrors}{\subsubsection{Расчёт погрешностей}} 
-\newcommand{\SchoolBase}{\subsubsection{Основные понятия из школьной программы}}
-\newcommand{\AdditionalQuestions}{\subsubsection{Дополнительные вопросы}}
-\newcommand{\AdditionalNotes}{\subsubsection{Замечания}}
-\newcommand{\Answer}{\textit{Ответ:} }
+\newcommand{\SolveVariant}{\subsubsection{п·п╢п╦п╫ п╦п╥ п╡п╟я─п╦п╟п╫я┌п╬п╡ я─п╣я┬п╣п╫п╦я▐ п╥п╟п╢п╟я┤п╦}}
+\newcommand{\MesErrors}{\subsubsection{п═п╟я│я┤я▒я┌ п©п╬пЁя─п╣я┬п╫п╬я│я┌п╣п╧}} 
+\newcommand{\SchoolBase}{\subsubsection{п·я│п╫п╬п╡п╫я▀п╣ п©п╬п╫я▐я┌п╦я▐ п╦п╥ я┬п╨п╬п╩я▄п╫п╬п╧ п©я─п╬пЁя─п╟п╪п╪я▀}}
+\newcommand{\AdditionalQuestions}{\subsubsection{п■п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫я▀п╣ п╡п╬п©я─п╬я│я▀}}
+\newcommand{\AdditionalNotes}{\subsubsection{п≈п╟п╪п╣я┤п╟п╫п╦я▐}}
+\newcommand{\Answer}{\textit{п·я┌п╡п╣я┌:} }
 
 \graphicspath{{images/}}
 \begin{document}
@@ -44,29 +44,29 @@
 %\lhead[\thechapter]{qwe}
 \maketitle
 \tableofcontents
-\chapter{Лабораторные работы за 9 класс}
+\chapter{п⌡п╟п╠п╬я─п╟я┌п╬я─п╫я▀п╣ я─п╟п╠п╬я┌я▀ п╥п╟ 9 п╨п╩п╟я│я│}
 \input{labsbook-9klass.tex}
-\chapter{Лабораторные работы за 10 класс}
+\chapter{п⌡п╟п╠п╬я─п╟я┌п╬я─п╫я▀п╣ я─п╟п╠п╬я┌я▀ п╥п╟ 10 п╨п╩п╟я│я│}
 \input{labsbook-10klass.tex}
-\chapter{Лабораторные работы за 11 класс}
+\chapter{п⌡п╟п╠п╬я─п╟я┌п╬я─п╫я▀п╣ я─п╟п╠п╬я┌я▀ п╥п╟ 11 п╨п╩п╟я│я│}
 \input{labsbook-11klass.tex}
 \end{document}
 
 
-% Шаблон
-\section{Название}
-\LabHeader{цель}{оборудование}
+% п╗п╟п╠п╩п╬п╫
+\section{п²п╟п╥п╡п╟п╫п╦п╣}
+\LabHeader{я├п╣п╩я▄}{п╬п╠п╬я─я┐п╢п╬п╡п╟п╫п╦п╣}
 \SolveVariant
 \begin{enumerate}
-    \item первое
+    \item п©п╣я─п╡п╬п╣
 \end{enumerate}
 \MesErrors
 \SchoolBase
 \begin{itemize}
-    \item пункт
+    \item п©я┐п╫п╨я┌
 \end{itemize}
 \AdditionalQuestions
 \begin{itemize}
-    \item вопрос\par
-    \Answer ответ
+    \item п╡п╬п©я─п╬я│\par
+    \Answer п╬я┌п╡п╣я┌
 \end{itemize}
