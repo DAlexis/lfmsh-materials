@@ -1,0 +1,167 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[vmargin={3cm,2cm},hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[warn]{mathtext}
+
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{topcapt}
+\usepackage{multicol}
+
+\usepackage{bold-extra}
+
+\usepackage{minted}
+\title{Основные команды Linux}
+\author{(ничтожно малая их часть с простейшими примерами!)\\версия~0.0.0.0.0.3}
+
+% Генератор номера ЛФМШи
+\newcounter{LFMSHnumber}
+\setcounter{LFMSHnumber}{\the \year}
+\addtocounter{LFMSHnumber}{-1987}
+\date{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+
+
+\newcommand{\Example}{\textbf{Пример: }\par}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\descr}[1]{\multicolumn{2}{|p{12cm}|}{#1}}
+
+\newcommand{\tableBegin}{\begin{tabular}{|p{4cm}|p{5cm}p{7cm}|}}
+\newcommand{\tableEnd}{\end{tabular}}
+
+\renewcommand{\f}[1]{\textbf{<#1>}}
+
+\newcommand{\task}{\textit{\textbf{Задача: }}}
+
+
+\graphicspath{{graph/}}
+\DeclareMathOperator{\Tr}{Tr}
+\begin{document}
+\maketitle
+Перед вами таблица самых основные команд Linux. В первом столбце приведен минимальный синтаксис команды, дополнительные ключи указаны в примерах. У большинства команд имеют десятки ключей для сотен случаев, краткое их описание можно получить с помощью ключа \code{-{}-help}, а подробное "--- используя утилиту \code{man}. Ну и гугол, конечно!
+
+\vspace{0.5cm}
+\section{Файлы}
+\tableBegin
+	\hline 
+	\code{pwd} & \descr{Показать полный путь до текущей директории} \\ \hline
+	\code{cd \f{dir}} & \descr{Перейти в каталог \code{\f{dir}}} \\ 
+	& \code{cd ..} & Перейти в родительский каталог \\
+	& \code{cd \textasciitilde} & Перейти в домашнюю папку \\
+	\hline
+	
+	\code{cp \f{source} \f{dest}} & \descr{Скопировать файл \code{source} в \code{\f{dest}}. Здесь \code{\f{dest}} может быть папкой или именем файла-копии} \\
+	& \code{cp -a dir1 dir2} & Скопировать целиком папку \code{dir1} в папку \code{dir2} \\ \hline
+	
+	\code{mv \f{source} \f{dest}} & \descr{Переместить файл \code{\f{source}} в \code{\f{dest}}. Также используется для переименования} \\ \hline
+	\code{rm \f{filename}} & \descr{Удаление файла} \\
+	& \code{rm -rf \f{directory}} & Удаление директории \\ \hline
+	
+	\code{mkdir \f{directory}} & \descr{Создать папку} \\
+	& \code{mkdir -p \f{some/directories/here}} & Создать последовательность вложенных папок. Если, например, \code{\f{some/directories}} уже существует, то будет создана только \code{\f{here}} \\ \hline
+	
+	\code{touch \f{file}} & \descr{Создать файл \code{\f{file}}, если его не существует. Иначе изменить дату и время последнего изменения файла на текущие} \\ \hline
+	
+	\code{find \f{dir} \f{condition}} & \descr{Поиск в \code{\f{dir}} по условию \code{\f{condition}}} \\
+	& \code{find \textasciitilde/Documents -iname "{}*.doc"{} -or -iname "{}*.docx"{}} & Найти все файлы с расширениями \code{.doc} и \code{.docx} \\ \hline
+	
+	\code{zip \f{archive-name} \f{files}} & \descr{Создать zip-архив или добавить фалы к существующему} \\ 
+	& \code {zip -9 archive.zip *.pdf} & Добавить в архив \code{archive.zip} все файлы с расширением \code{.pdf} и использовать максимальное сжатие \\
+	\hline
+	
+	\code{unzip} & \descr{Распаковать zip-архив} \\
+	\hline
+	
+	\code{tar} & \descr{Архиватор без сжатия. Подходит для быстрого объединения множества файлов в один} \\
+	& \code{tar -cvf archive.tar *.jpg} & Добавить все джипеги в архив \code{archive.tar} \\
+	& \code{tar -xvf archive.tar} & Распаковать \code{archive.tar} \\
+	\hline
+	
+\tableEnd
+\section{Сеть}
+\tableBegin
+    \hline
+    \code{ssh \f{username}@\f{host}} & \descr{Подключение к терминалу на другом компьютере. В качестве \code{\f{host}} указывается имя или IP-адрес компьютера. Имеет также множество других применений} \\ \hline
+    \code{rsync \f{from} \f{to}} & \descr{Синхронизация папок \code{\f{from}} и \code{\f{to}}. Копируются лишь измененные файлы. Поддерживается подключение через ssh.} \\ \hline
+    
+    \code{wget \f{url}} & \descr{Загрузка файла или страницы} \\
+    & \code{wget -O - }
+\tableEnd
+\section{Строки, потоки}
+\tableBegin
+	\hline 
+	\code{grep} & \descr{Многофункциональная команда для поиска данных в потоках и в файлах} \\
+	& \code{... | grep \f{str}} & Отфильтровать из потока только строки, содержащие \code{\f{str}} \\
+	& \code{grep -rnI \f{str} \f{dir}} & Найти во всех текстовых~(\code{-I}) файлах строки, содержащие \code{\f{str}}. Поиск производится рекурсивно~(\code{-r}) в директории~\code{\f{dir}}. Выводятся номера строк~(\code{-n}). \\ \hline
+	
+	\code{sed \f{expression}} & \descr{Потоковый редактор текста. Замена по шаблону и не только} \\ 
+	& \code{sed s/Hi/Hello/g -i \f{file}} & Заменить каждое \code{Hi} на \code{Hello} в файле \code{\f{file}} \\ \hline
+	
+	\code{xargs \f{command}} & \descr{Запустить команду \code{\f{command}}, а в качестве аргумента передать стандартный ввод} \\
+	& \code{ls *.cpp | xargs cat} & Вывести в терминал содержимое всех файлов с расширением \code{.cpp} \\ \hline
+	
+	\code{date} & \descr{Вывести текущую дату. Команду удобно использовать в скриптах, например для генерации имени файла.} \\
+	& \code{date +"\%Y-\%m-\%d \%H:\%M:\%S"} &  Вывести дату в формате, описанном после \code{+}. Результатом будет, например \code{2018-08-21 14:50:56} \\
+	\hline
+%	& \code{find . -iname "{}*.jpg"{} | xargs -l }
+\tableEnd
+\section{Процессы}
+\tableBegin
+	\hline
+	\code{ps} & \descr{Вывести список процессов. Команда использует информацию из \code{/proc}} \\ 
+	& \code{ps aux} & Подробная информация обо всех процессах всех пользователей \\ \hline
+	
+	\code{kill \f{PID}} & \descr{Послать сигнал процессу. По умолчанию "--- \code{SIGKILL} (номер 15), что <<мягко>> убивает процесс, позволяя ему обработать ситуацию} \\
+	& \code{kill -15 3456} & Послать сигнал \code{SIGTERM} процессу с \code{PID}-ом~3456. Убивает процесс сразу же, не давая обработать событие. \\ \hline
+	
+	\code{killall \f{procname}} & \descr{Аналогична команде \code{kill}, однако вместо \code{PID} указывается имя процесса \code{procname}. Поскольку одновременно могут работать несколько одинаковых процессов, сигнал будет послан каждому} \\
+	& \code{killall ioquake3} & Убить кваку \\ \hline
+\tableEnd
+\section{Ещё примеры}
+\begin{enumerate}
+	\item Подсчитать количество строк в проекте, написанном на C++:
+	
+	\code{find ./my-project -iname "{}*.cpp"{} -or -iname "{}*.hpp"{} | xargs cat | wc -l}
+	
+	\item Найти и переместить все файлы с расширением \code{.jpg} в папку \code{pictures}. Поиск производится в папке~\code{documents}:
+	
+	\code{find \textasciitilde/documents/ -iname "{}*.jpg"{} | xargs -I FILENAME mv FILENAME \textasciitilde/pictures}
+	
+	Здесь \code{xargs -I FILENAME} означает, что вместо \code{FILENAME} в выражении \code{mv FILENAME \textasciitilde/pictures} будет подставлен вывод команды \code{find}.
+	
+	\item Синхронизация локальной папки \code{\textasciitilde/documents} и папки \code{/home/alex/documents} на компьютере с адресом \code{192.168.1.25}. Изменения из локальной папки попадут в удалённую: 
+	
+	\code{rsync -avr -{}-progress \textasciitilde/documents alex@192.168.1.25:/home/alex/documents}
+\end{enumerate}
+\section{Готовые скрипты}
+\subsection{Резервная копия папки \code{\textasciitilde/documents}}
+\task обеспечить резервное копирование папки \code{\textasciitilde/documents} раз в сутки. Папка должна архивироваться и сохраняться в \code{\textasciitilde/backup}. Имя должно содержать время создания резервной копии.
+
+Напишем скрипт для резервного копирования. Пусть это будет файл \code{\textasciitilde/backup.sh}.
+\begin{minted}{bash}
+#!/bin/bash
+
+set -e # Останавливать скрипт при ошибках
+
+time=`date "\%Y-\%m-\%d\_\%H-\%M-\%S"` # Дата и время в нужном формате
+tar -zcvf ~/backup/backup_${time}.tar.gz ~/documents
+\end{minted}
+
+Добавим ежедневное задание для \code{cron}:
+
+\begin{minted}{bash}
+crontab -l > /tmp/crontab
+echo "@daily /home/username/backup.sh" >> /tmp/crontab
+crontab < /tmp/crontab
+\end{minted}
+
+
+\end{document}
+
