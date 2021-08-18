@@ -38,7 +38,7 @@ def load_mnist_test():
 
 def plot_mnist(index, data, labels=None):
     image = np.asarray(data[index]).squeeze()
-    if labels:
+    if labels is not None:
         plt.title("Digit %d" % labels[index])
     plt.imshow(image)
     
