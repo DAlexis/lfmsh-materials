@@ -1,0 +1,94 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[vmargin={2cm,2cm},hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[warn]{mathtext}
+
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{topcapt}
+\usepackage{float}
+
+\title{Расчёт погрешностей}
+\newcounter{LFMSHnumber}
+\setcounter{LFMSHnumber}{\the \year}
+\addtocounter{LFMSHnumber}{-1987}
+\date{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+
+
+\newcommand{\figRef}[1]{рис.~\ref{#1}}
+\newcommand{\FigRef}[1]{Рис.~\ref{#1}}
+\newcommand{\Example}{\textbf{Пример: }\par}
+\graphicspath{{graph/}}
+
+
+\begin{document}
+%\maketitle
+\textit{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+\section{Расчёт погрешностей}
+
+\subsection{Прямые и косвенные измерения}
+Измерение той или иной физической величины $A$ называется \textit{прямым,} если её значение непосредственно считывается с измерительного прибора. Например, измерение ширины листа бумаги линейкой, предел измерения которой заведомо больше ширины листа~"--- прямое.
+
+Измерение физической величины $B$ называется \textit{косвенным}, если для её нахождения используются результаты каких-либо других, прямых измерений (существует формула для $B$, в которую входят другие величины). Например, если линейкой измеряется ширина $a$ и длина $b$ бумажного листа, то площадь, полученная как~$S=ab$~"--- косвенно измеренная величина.
+
+\subsection{Абсолютная и относительная погрешности}
+Ни одну физическую величину нельзя измерить совершенно точно. \textit{Абсолютной погрешностью} полученного значения~$A$ некоторой физической величины называют такое~$\Delta A$, что с высокой вероятностью 
+\begin{equation}
+	A-\Delta A < A_{\text{ист}} < A+\Delta A,
+\end{equation}
+где~$A_{\text{ист}}$~"--- истинное значение измеряемой величины. То есть, истинное значение отличается от полученного не более, чем на $\Delta A$.
+
+Относительной погрешностью этой величины называется 
+\begin{equation}
+	\varepsilon A = \frac{\Delta A}{A},
+\end{equation}
+то есть часть, которую составляет $\Delta A$ от $A$. Обычно указывается в процентах.
+
+\subsection{Погрешности прямых измерений}
+Абсолютная погрешность $\Delta A$ прямого измерения некоторой величины $A$ в большинстве случаев состоит из двух частей:
+\begin{equation}
+	\Delta A = \Delta A_{\text{ин}} + \Delta A_{\text{от}},
+\end{equation}
+Здесь $\Delta A_{\text{ин}}$~"--- или \textit{инструментальная,} или \textit{объективная} погрешность, а $\Delta A_{\text{от}}$~"--- \textit{погрешность отсчёта,} или \textit{субъективная}. Инструментальная погрешность~$\Delta A_{\text{ин}}$ обусловлена неидеальностью измерительного прибора и указывается его изготовителем. Погрешность отсчёта~$\Delta A_{\text{от}}$ характеризует ошибку, возникающую при использовании прибора в конкретной ситуации. Например, при измерении длины стола со скруглёнными краями погрешность отсчёта выше, чем для стола с прямыми. В большинстве случаев погрешность отсчёта не бывает меньше половины цены деления.
+
+\subsection{Погрешности косвенных измерений}
+
+Рассмотрим теперь некоторую величину $C = A + B$, где $A$ и $B$~"--- величины, измеряемые прямо. Пусть $A$ и $B$ имеют абсолютные погрешности $\Delta A$ и $\Delta B$. Тогда:
+\begin{equation}
+	A-\Delta A < A_{\text{ист}} < A+\Delta A, \quad 
+		B-\Delta B < B_{\text{ист}} < B+\Delta B.
+\end{equation} 
+Складывая выражения, получим:
+\begin{equation}
+	(A+B)-(\Delta A + \Delta B) < (A_{\text{ист}} + B_{\text{ист}}) < (A+B)+(\Delta A + \Delta B)
+\end{equation}
+Но, $A+B=C$ и $A_{\text{ист}}+B_{\text{ист}}=C_{\text{ист}}$, тогда
+\begin{equation}
+	C-(\Delta A + \Delta B) < C_{\text{ист}} < C+(\Delta A + \Delta B),
+\end{equation}
+а значит, по определению, $\Delta C = \Delta A + \Delta B$, или $\Delta (A+B) = \Delta A + \Delta B$.
+
+Аналогично можно доказать следующие формулы:
+\begin{center}
+	\begin{tabular}{ |c|c| } 
+		\hline
+		$\Delta(A\pm B) = \Delta A + \Delta B$ & \varepsilon () \\ 
+		$\varepsilon \left( \frac{A}{B} \right) = \varepsilon A + \varepsilon B$ & cell5 \\ 
+		$\varepsilon A \cdot \varepsilon B = \varepsilon A + \varepsilon B$ & cell8 \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+
+
+
+\end{document}
+
+1

@@ -1,0 +1,71 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[vmargin={1cm,2cm},hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[warn]{mathtext}
+
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{topcapt}
+
+\title{Финальный зачёт по машинному обучению}
+\newcounter{LFMSHnumber}
+\setcounter{LFMSHnumber}{\the \year}
+\addtocounter{LFMSHnumber}{-1987}
+\date{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+
+\newcommand{\figRef}[1]{рис.~\ref{#1}}
+\newcommand{\FigRef}[1]{Рис.~\ref{#1}}
+\newcommand{\Example}{\textbf{Пример: }\par}
+
+\graphicspath{{graph/}}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Снова напишите свою фамилию, имя и отряд разборчивым почерком.
+	\vspace{1cm}
+	\item Для каких из перечисленных алгоритмов характерна проблема переобучения?
+	\begin{enumerate}
+		\item Решающее дерево
+		\item Метод kNN
+		\item Логистическая регрессия
+		\item Перцептрон
+		\item Нейронная сеть
+	\end{enumerate}
+	\item Каким образом устроена функция ошибки в методе логистической регрессии?
+	\begin{enumerate}
+		\item Минимизируется несоответствие предсказания с разметкой с квадратами $L=\sum (P(\vec x^i) - c_i)^2$
+		\item Минимизируется несоответствие предсказания с разметкой с модулями $L=\sum |P(\vec x^i) - c_i|$
+		\item 
+		\begin{sloppypar}
+			Максимизируется вероятность правильной классификации обучающей выборки ${P_{всё верно}=\prod_{i=1}^N (P(\vec x^i))^{c_i} (1 - P(\vec x^i))^{1 - c_i}}$
+		\end{sloppypar}
+		\item Вычисляется свёртка от выходов первого слоя с последующим применением логистической функции $f(x)=\frac{1}{1+e^{-x}}$
+	\end{enumerate}
+	
+	\item Что из перечисленного отличает свёрточную нейронную сеть от полносвязной? Выберите все верные варианты
+	\begin{enumerate}
+		\item Свёрточная сеть использует функцию активации ReLU, а полносвязная~"--- логистическую функцию 
+		\item Свёрточная сеть учитывает взаимное расположение пикселов, а полносвязная~"--- нет
+		\item Свёточная нейронная сеть имеет значительно меньшее число настраиваемых параметров
+		\item Свёточная нейронная сеть имеет значительно большее число настраиваемых параметров, и поэтому более эффективна
+	\end{enumerate}
+	
+	\item
+	Напишите уравнение плоскости в $n$-мерном пространстве, если заданы единичная нормаль $\vec n$ и расстояние до начала координат d.
+	\vspace{1cm}
+	\item Нарисуйте схему перцептрона.
+	\vspace{4cm}
+	\item В чём состоит задача понижения размерности? Можно продолжать писать на другой стороне листочка!
+	\vspace{4cm}
+
+\end{enumerate}
+\end{document}
+
