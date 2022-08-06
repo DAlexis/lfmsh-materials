@@ -1,0 +1,4 @@
+deb [trusted=yes, arch=amd64] http://SERVER_IP/ubuntu/ jammy main restricted
+deb [trusted=yes, arch=amd64] http://SERVER_IP/ubuntu/ jammy-updates main restricted
+deb [trusted=yes, arch=amd64] http://SERVER_IP/ubuntu/ jammy universe
+deb [trusted=yes, arch=amd64] http://SERVER_IP/ubuntu/ jammy-updates universe
