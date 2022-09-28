@@ -1,0 +1,70 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[vmargin={1cm,2cm},hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[warn]{mathtext}
+
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{topcapt}
+
+\title{Финальный зачёт по машинному обучению}
+\newcounter{LFMSHnumber}
+\setcounter{LFMSHnumber}{\the \year}
+\addtocounter{LFMSHnumber}{-1987}
+\date{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+
+\newcommand{\figRef}[1]{рис.~\ref{#1}}
+\newcommand{\FigRef}[1]{Рис.~\ref{#1}}
+\newcommand{\Example}{\textbf{Пример: }\par}
+
+\graphicspath{{graph/}}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Снова напишите свою фамилию, имя и отряд разборчивым почерком.
+	\vspace{1cm}
+	\item Для каких из перечисленных алгоритмов характерна проблема переобучения?
+	\begin{enumerate}
+		\item Решающее дерево
+		\item Метод kNN
+		\item Логистическая регрессия
+		\item Характерна для всех
+	\end{enumerate}
+	\item Каким образом устроена функция ошибки в методе логистической регрессии?
+	\begin{enumerate}
+		\item Минимизируется величина $Accuracy = \frac{TP+TN}{TP+TN+FP+FN}$ на обучающей выборке
+		\item Минимизируется несоответствие предсказания с разметкой $L=\sum |P(\vec x^i) - c_i|$
+		\item 
+		\begin{sloppypar}
+			Максимизируется вероятность правильной классификации обучающей выборки ${P_{train}=\prod_{i=1}^N (P(\vec x^i))^{y_i} (1 - P(\vec x^i))^{1 - y_i}}$
+		\end{sloppypar}
+		\item Минимизируется логистическая функция  $f(x)=\frac{1}{1+e^{-x}}$ от расстояния до гиперплоскости $d(\vec r)$
+	\end{enumerate}
+
+	
+	\item
+	Напишите уравнение плоскости в $n$-мерном пространстве, если заданы единичная нормаль $\vec n$ и некоторая произвольная точка $\vec r_0$, лежащая на плоскости
+	\vspace{3cm}
+	
+	\item
+	Объясните, что делают следующие строчки кода:
+	\begin{verbatim}
+		clf = LogisticRegression()
+		clf.fit(X_train, y_train)
+		y_predict = clf.predict(X_val)
+	\end{verbatim}
+	\vspace{5 cm}
+	\item В чём состоит метод логистической регрессии? Почему его называют <<регрессия>> (предсказание вещественной величины), а не <<классификация>> (предсказание бинарного класса)? (Можно перевернуть листочек и писать там!)
+	\vspace{4cm}
+
+\end{enumerate}
+\end{document}
+
