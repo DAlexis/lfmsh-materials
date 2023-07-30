@@ -10,7 +10,7 @@ services:
         restart: unless-stopped
         volumes:
          - type: bind
-           source: /mnt/data-ext4-int/ubuntu-22.04-mirror
+           source: /home/dalexies/repo-mirror/ubuntu-22.04-mirror
            target: /srv/http
         ports:
          - 80:80
@@ -18,15 +18,40 @@ services:
     devpisrv:
         build: pypimirror
         ports:
-         - "${SERVER_IP:-0.0.0.0}:${SERVER_PORT:-3141}:3141"
+         - "${SERVER_IP:-0.0.0.0}:${DEVPISRV_PORT:-3141}:3141"
         volumes:
          - devpisrv-data:/var/local/devpisrv
         restart: always
+        profiles:
+         - donotstart
+
+    openldap:
+        image: docker.io/bitnami/openldap:2.6
+        ports:
+         - '389:1389'
+         - '636:1636'
+        environment:
+         - LDAP_ADMIN_USERNAME=admin
+         - LDAP_ADMIN_PASSWORD=adminpassword
+         - LDAP_USERS=user01,user02
+         - LDAP_PASSWORDS=password1,password2
+        volumes:
+         - 'openldap_data:/bitnami/openldap'
+
+    phpldapadmin:
+        image: osixia/phpldapadmin:0.9.0
+        ports:
+         - '6443:443'
+        environment:
+         - PHPLDAPADMIN_LDAP_HOSTS=${SERVER_IP}
+         #- PHPLDAPADMIN_HTTPS=false
+        restart: always
+
         #profiles:
         # - donotstart
 
 volumes:
-    devpisrv-data:
-
-
+  openldap_data:
+    driver: local
+  devpisrv-data:
 
