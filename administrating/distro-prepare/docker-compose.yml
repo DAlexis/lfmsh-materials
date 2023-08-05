@@ -22,8 +22,8 @@ services:
         volumes:
          - devpisrv-data:/var/local/devpisrv
         restart: always
-        profiles:
-         - donotstart
+        #profiles:
+        # - donotstart
 
     openldap:
         image: docker.io/bitnami/openldap:2.6
