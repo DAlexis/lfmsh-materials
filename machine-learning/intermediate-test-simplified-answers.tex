@@ -1,0 +1,86 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[vmargin={3cm,2cm},hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+\usepackage{color,soulutf8}
+
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[warn]{mathtext}
+
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{topcapt}
+\usepackage{multirow}
+
+\title{Промежуточный зачёт по машинному обучению}
+\newcounter{LFMSHnumber}
+\setcounter{LFMSHnumber}{\the \year}
+\addtocounter{LFMSHnumber}{-1987}
+\date{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+
+
+\newcommand{\figRef}[1]{рис.~\ref{#1}}
+\newcommand{\FigRef}[1]{Рис.~\ref{#1}}
+\newcommand{\Example}{\textbf{Пример: }\par}
+
+\graphicspath{{graph/}}
+
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Напишите свою фамилию, имя и отряд разборчивым почерком~[1\,бл]
+	
+	Дубинин Ваня Петрович
+	
+	\item Что такое переобучение?~[1\,бл]
+	\begin{enumerate}
+		\item Невозможность минимизации функции ошибки
+		\item \hl{Чрезмерная адаптация модели к особенностям обучающей выборки с потерей обобщающей способности}
+		\item Чрезмерное уширение решающего дерева
+		\item Занятия т.\,н. <<спортивным программированием>> более 8\,ч. в день
+	\end{enumerate}
+	
+	\item Расставьте TP, FP, TN, FN по матрице ошибок (confusion matrix) для бинарного классификатора:~[1\,бл]
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c| } 
+			\hline
+			 \multicolumn{2}{|c|}{} & \multicolumn{2}{|c|}{Истинные значения}  \\
+			 \cline{3-4} 
+			 \multicolumn{2}{|c|}{} & True & False \\ 		 
+			 \hline
+		     \multirow{2}{5em}{Результаты модели} & True & \hl{TP} & \hl{FP} \\ 
+		     \cline{2-4}
+			 
+			& False & \hl{FN} & \hl{TN} \\ 
+			\hline
+		\end{tabular}
+	\end{center}	
+	\item Опишите, в чём заключается нормализация данных и для чего она нужна:~[2\,бл]
+	
+	Номализация данных нужна для того, чтобы привести все признаки к одному диапазону. Чтобы нормализовать признак $x$ нужно:
+	\begin{itemize}
+		\item Найти среднее значение: $\overline{x} = \frac{\sum_{i=1}^N x_i}{N}$
+		\item Найти среднеквадратичное отклонение: $\sigma_x = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N}}$
+		\item Преобразовать значения признака $x$ для каждого элемента выборки: $x^*_i = \frac{x_i - \overline{x_i}}{\sigma_x}$
+	\end{itemize}
+	
+	Без нормализации невозможно корректно определять расстояния между точками в пространстве признаков
+
+	\item Кратко опишите суть метода kNN.~[2\,бл]
+	
+	Для пробной точки, которую нужно классифицировать, находятся $k$~ближайших точек обучающей выборки, где $k$~"--- нечётное. Точек какого класса среди них больше, к такому классу и относят пробную точку. Для метода kNN необходима предварительная нормализация данных, потому что нужно считать расстояния.
+	
+	\item Чем задача кластеризации отличается от задачи классификации?~[2\,бл]
+	
+	Задача классификации~"--- это пример обучения с учителем, где модель должна по обучающей выборке, для которой известны <<ответы>>, научиться классифицировать незнакомые точки.
+	
+	Задача кластеризации~"--- это пример обучения без учителя, когда никаких классов заранее неизвестно, и алгоритм должен сгруппировать данные в кластеры на основании близости точек в пространстве параметров тем или иным способом.
+	
+\end{enumerate}
+\end{document}
+

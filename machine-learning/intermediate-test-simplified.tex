@@ -1,0 +1,71 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[vmargin={3cm,2cm},hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage[warn]{mathtext}
+
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{topcapt}
+\usepackage{multirow}
+
+\title{Промежуточный зачёт по машинному обучению}
+\newcounter{LFMSHnumber}
+\setcounter{LFMSHnumber}{\the \year}
+\addtocounter{LFMSHnumber}{-1987}
+\date{ЛФМШ-\arabic{LFMSHnumber}, август {\the \year}~г.}
+
+
+\newcommand{\figRef}[1]{рис.~\ref{#1}}
+\newcommand{\FigRef}[1]{Рис.~\ref{#1}}
+\newcommand{\Example}{\textbf{Пример: }\par}
+
+\graphicspath{{graph/}}
+
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item Напишите свою фамилию, имя и отряд разборчивым почерком
+	\vspace{1cm}
+	\item Что такое переобучение?
+	\begin{enumerate}
+		\item Невозможность минимизации функции ошибки
+		\item Чрезмерная адаптация модели к особенностям обучающей выборки с потерей обобщающей способности
+		\item Чрезмерное уширение решающего дерева
+		\item Занятия т.\,н. <<спортивным программированием>> более 8\,ч. в день
+	\end{enumerate}
+	
+	\item Расставьте TP, FP, TN, FN по матрице ошибок (confusion matrix) для бинарного классификатора:
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c| } 
+			\hline
+			 \multicolumn{2}{|c|}{} & \multicolumn{2}{|c|}{Истинные значения}  \\
+			 \cline{3-4} 
+			 \multicolumn{2}{|c|}{} & True & False \\ 		 
+			 \hline
+		     \multirow{2}{5em}{Результаты модели} & True &  &  \\ 
+		     \cline{2-4}
+			 
+			& False &  &  \\ 
+			\hline
+		\end{tabular}
+	\end{center}	
+
+	\item Опишите, в чём заключается нормализация данных и для чего она нужна:
+
+	\newpage
+	\item Кратко опишите суть метода kNN.
+	\vspace{10cm}
+	\item Чем задача кластеризации отличается от задачи классификации?
+	\vspace{9cm}
+	
+\end{enumerate}
+\end{document}
+
